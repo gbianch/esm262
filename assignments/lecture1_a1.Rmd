@@ -1,0 +1,15 @@
+---
+title: "Pre-class Assignment"
+author: "Grace Bianchi"
+date: "2023-02-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I am taking this course to expand my technical skills in the environmental field. I enjoy data analysis, and I think this course will help me learn more to improve my workflow. I am also the data manager for my group project, so I want make sure my data management is understandable/reproducible when it comes time to submit the metadata.
+
+
+My data science background began when I came to Bren. The relevant courses I have taken are 206 and 244 which I am currently enrolled in. Prior to Bren, I had a little experience using R and Python, but it wasn't in a data science application.
