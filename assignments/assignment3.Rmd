@@ -8,13 +8,16 @@ output:
 ---
 
 ```{r setup, include=TRUE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
 library(tidyverse)
 library(here)
 library(kableExtra)
 library(purrr)
-library(cowplot)
+library(patchwork)
 source("~/Desktop/UCSB/Second_Year/ESM_262/ESM_262_Examples/R/autopower.R")
 ```
 
@@ -32,7 +35,7 @@ Imagine with have 3 different car types - and we know how often each occurs:
 possible_cars = data.frame(name = c("A","B","C","D"),mass=c(10000,65000,38000,5000), area = c(22,30,22,10))
 
 # first look at how results vary for mean speed say 100km/hr
-speed_base = (80 * 0.277)
+speed_base = (100 * 0.277)
 
 # add to the data structure
 possible_cars$power = autopower(V=speed_base, A = possible_cars$area, m=possible_cars$mass)
@@ -44,7 +47,7 @@ nsample = 200
 #assume a log normal distribution of speeds with mean 80 km/hr, and standard deviation that is 10 km/hr 
 mean_speed = log(80*0.277)
 sd_log = log(10*0.277)
-speeds = rlnorm(mean = mean_speed, sd = sd_log, n = nsample)
+speeds = rlnorm(mean = mean_speed, sd =0.125*mean_speed, n = nsample)
 
 #summary(speeds)
 plot(density(speeds), ylab="Distribution of Speeds in (m/s)")
@@ -100,13 +103,14 @@ kable(power_loop_summary, col.names = c("Car", "Mean Power", "Max Power"), capti
 ```{r}
 
 g1 <- ggplot(data = power_loop_long, aes(x = car, y = power, group = car)) +
-  geom_boxplot() +
+  geom_boxplot(aes(fill = car)) +
   labs(title = "For loop")
 
 g2<- ggplot(data = power_all_pmap, aes(x = car, y = power, group = car)) +
-  geom_boxplot() +
+  geom_boxplot(aes(fill = car)) +
   labs(title = "Pmap Method")
 
-plot_grid(g1+g2)
+g1+g2
 ```
 
+Figure 1. Box plots to show the power distribution of four cars using two different methods. The box represents the interquantile range, in which the bottom of the box is the 25% quantile, top of the box is the 75% quantile, and the middle line is the median. The black points indicate outliers and the highest point represents the maximum power for each car.
