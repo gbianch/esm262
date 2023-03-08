@@ -18,7 +18,8 @@ library(here)
 library(kableExtra)
 library(purrr)
 library(patchwork)
-source("~/Desktop/UCSB/Second_Year/ESM_262/ESM_262_Examples/R/autopower.R")
+
+source("~/Desktop/UCSB/Second_Year/ESM_262/esm262/R/autopower.R")
 ```
 
 
