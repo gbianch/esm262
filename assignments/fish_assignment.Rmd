@@ -1,0 +1,29 @@
+---
+title: "Fish assignment"
+author: "Grace Bianchi"
+date: "2023-03-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+library(tidyverse)
+source("~/Desktop/UCSB/Second_Year/ESM_262/esm262/R/fish_diversity.R")
+```
+
+This code reads in a dataset containing a list of fish observations and tests a fish_diversity function to determine the total number of fish, the most common and least common species. 
+
+```{r}
+fishURL <- ("https://raw.githubusercontent.com/naomitague/ESM_262_Examples/main/Data/fish.txt") # URL from github
+fish <- read_csv(fishURL) # read file in as csv
+
+# rename column name
+colnames(fish)[1] = "type"
+```
+
+```{r}
+fish_diversity(fish)
+```
+
