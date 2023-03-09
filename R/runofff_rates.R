@@ -3,10 +3,9 @@
 #' This function allows the user to input land area, fertlizer application rate, and precipitation and compute the estimated
 #' amount of water into the nearby waterbody and how run off impacts water quality.
 #' 
-#' @param runoff_coeff
+#' @param runoff_coeff clay (0.5) or loam (0.2)
 #' @param land_area km^2; size of land where fertilizer is applied
 #' @param application_rate kg/ha
-#' @param soil_type clay (0.5) or loam (0.2)
 #' @param area_type flat or hilly agricultural land 
 #' @param precipitaion m/s
 #' @param catchment_area km^2
